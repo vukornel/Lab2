@@ -1,0 +1,7 @@
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\bin\Release\LabZsV4.exe.config
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\bin\Release\LabZsV4.exe
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\bin\Release\LabZsV4.pdb
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\obj\Release\LabZsV4.csprojAssemblyReference.cache
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\obj\Release\LabZsV4.csproj.CoreCompileInputs.cache
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\obj\Release\LabZsV4.exe
+C:\Users\vkornel\Desktop\LabZsV4\LabZsV4\obj\Release\LabZsV4.pdb
