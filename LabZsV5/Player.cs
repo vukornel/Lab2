@@ -2,14 +2,32 @@
 
 namespace LabZsV
 {
-	class Player
+    class Player : Entity
 	{
-        public int x { get; set; }
-        public int y { get; set; }
-        public Player(int x, int y)
+        public Player(int x, int y, Labyrinth inLabi) : base(x, y, inLabi) {}
+
+        public void Move(ConsoleKeyInfo ck)
         {
-            this.x = x;
-            this.y = y;
+            switch (ck.Key)
+            {
+                case ConsoleKey.RightArrow:
+                    y++;
+                    if (CollidesWithWall()) y--;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    y--;
+                    if (CollidesWithWall()) y++;
+                    break;
+                case ConsoleKey.DownArrow:
+                    x++;
+                    if (CollidesWithWall()) x--;
+                    break;
+                case ConsoleKey.UpArrow:
+                    x--;
+                    if (CollidesWithWall()) x++;
+                    break;
+            }
         }
+
     }
 }

@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="DB.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Labyrinth.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
