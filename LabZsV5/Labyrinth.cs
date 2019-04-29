@@ -15,15 +15,13 @@ namespace LabZsV
         Random rnd = new Random();
         private int x;
         private int y;
-        public int winX { get; set; }
+        public int winX { get; set; }   
         public int winY { get; set; }
 
-        int[,] visited; // egyenlőre felesleges de később hátha jólesz
-
-        public Labyrinth() => walls = new int[height, width]; //0 a nemfal, 1 a fal, 2 a győzelmi hely
-
-        private void PreGenerateWalls()
+        public Labyrinth()
         {
+            walls = new int[height, width]; //0 a nemfal, 1 a fal, 2 a győzelmi hely
+
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < height; j++)
                     walls[j, i] = 1; // feltöltés falakkal
@@ -31,7 +29,6 @@ namespace LabZsV
             x = 1;
             y = 1;
             walls[x, y] = 0;
-            visited = walls; //0 visited 1 nem
         }
 
         public void GenerateWalls()
@@ -39,17 +36,15 @@ namespace LabZsV
             int dbWallLeft = (width - 2) * (height - 2) / 2;
             int direction = rnd.Next(4); // alapból 4
 
-            PreGenerateWalls();
             do
             {
                 do
                 {
                     if (rnd.Next(4) == 0) direction = rnd.Next(4); // alapból 4
                     NextWall(direction);
-                } while (visited[x, y] == 0);
+                } while (walls[x, y] == 0);
 
                 walls[x, y] = 0;
-                visited[x, y] = 0;
                 dbWallLeft--;
             } while (dbWallLeft != 0);
 
@@ -84,9 +79,7 @@ namespace LabZsV
                 {
                     Console.SetCursorPosition(j, i);
                     if (walls[i, j] == 1)
-                    {
                         Console.BackgroundColor = ConsoleColor.White;
-                    }
                     else if (walls[i, j] == 2)
                     {
                         Console.BackgroundColor = ConsoleColor.Red;

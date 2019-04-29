@@ -12,8 +12,9 @@ namespace LabZsV
         private int playerPoints = 0;
         private Labyrinth labyrinth;
         // private DB database;
-        private Stopwatch time = new Stopwatch();
+        private Stopwatch timer = new Stopwatch();
         private bool lose;
+        
         private void Init()
         {
             player = new Player(1, 1, labyrinth);
@@ -28,7 +29,6 @@ namespace LabZsV
         public void Start()
         {
             Console.CursorVisible = false;
-
             string line;
 
             while (true)
@@ -42,18 +42,16 @@ namespace LabZsV
                 } while (line != "1" && line != "2" && line != "3");
 
                 if (line == "1") StartGame();
-                // else if (line == "3") database.DBquery(); db off
+                // else if (line == "3") database.DBquery(); // db off
                 else
                 {
-                    int pont = playerPoints;
-                    int ido = (int)time.Elapsed.TotalSeconds;
-                    if (pont != 0)
+                    int ido = (int)timer.Elapsed.TotalSeconds;
+                    if (playerPoints != 0)
                     {
-                        Console.Write("Pontok: " + pont.ToString() + " \nIdő: " + ido.ToString() + "\nNév: ");
+                        Console.Write("Pontok: " + playerPoints.ToString() + " \nIdő: " + ido.ToString() + "\nNév: ");
                         // string nev = Console.ReadLine();
-                        // database.DBconnect(pont, ido, nev); adatbázis off
+                        // database.DBconnect(playerPoints, ido, nev); // adatbázis off
                     }
-
                     System.Environment.Exit(1);
                 }
             }
@@ -62,7 +60,7 @@ namespace LabZsV
         private void StartGame()
         {
             Init();
-            time.Start();
+            timer.Start();
             lose = false;
             bool wins = false;
 
@@ -84,16 +82,15 @@ namespace LabZsV
             if (wins)
             {
                 ++playerPoints;
-                Console.WriteLine("Ido: " + time.Elapsed.TotalSeconds + ", pontok: " + playerPoints.ToString());
+                Console.WriteLine("Ido: " + timer.Elapsed.TotalSeconds + ", pontok: " + playerPoints.ToString());
             }
             else
             {
-                Console.WriteLine("Elakaptak! Nincs plusz pont. Ido: " + time.Elapsed.TotalSeconds + ", pontok: " + playerPoints.ToString());
+                Console.WriteLine("Elkaptak! Nincs plusz pont. Ido: " + timer.Elapsed.TotalSeconds + ", pontok: " + playerPoints.ToString());
             }
-            time.Stop();
+            timer.Stop();
 
         }
-
 
         private void KeyPressed(ConsoleKeyInfo ck)
         {
